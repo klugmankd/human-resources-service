@@ -1,7 +1,6 @@
 <?php
 
 include_once ("app/Resources/router.php");
-include_once ("app/front-end/header.php");
 
 $route = ($_GET['route'] == '') ? 'index' : $_GET['route'];
 
@@ -25,4 +24,3 @@ if (isset($url[2])) {
     }
 }
 
-include_once ("app/front-end/footer.php");

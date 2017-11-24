@@ -18,8 +18,13 @@ $employee = new Employee($connect);
 
 $arRead[] = array(
     "col" => "first_name",
-    "value" => "Kostya"
+    "value" => "Tony"
 );
+
+    $arRead[] = array(
+        "col" => "last_name",
+        "value" => "Stark"
+    );
 
 //create
 
@@ -78,9 +83,9 @@ $arDelete = array(
     )
 );
 
-$employee->delete($arDelete);
+//$employee->delete($arDelete);
 
 //$employee->create($arCreate);
 //$employee->update($arUpdate);
 ?>
-<!--<pre>--><? // print_r($employee->read($arRead)) ?><!--</pre>-->
+<pre><?  print_r($employee->read($arRead)) ?></pre>

@@ -34,7 +34,7 @@ class Employee
         foreach ($arCriteria as $key => $criterion) {
             $col = $criterion['col'];
             $value = $criterion['value'];
-            $conditions .= (($key == count($arCriteria) - 1) && count($arCriteria) > 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}';";
+            $conditions .= ($key !== count($arCriteria) - 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}';";
         }
         $query = "SELECT * FROM {$this->table} WHERE {$conditions}";
         $executing = mysqli_query($this->connect, $query);

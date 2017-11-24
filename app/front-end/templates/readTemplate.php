@@ -1,7 +1,11 @@
 <div class="form-block">
     <div class="title">
-        Створення
+        Перегляд
     </div>
+    <div class="form-group">
+        <input type="number" name="id" class="input" placeholder="Ідентифікатор">
+    </div>
+    <br>
     <div class="form-group">
         <input type="text" name="first_name" class="input" placeholder="Ім'я">
     </div>
@@ -19,7 +23,10 @@
     </div>
     <br>
     <div class="form-group">
-        <input type="button" id="create" value="Створити">
+        <input type="button" id="read" value="Переглянути">
     </div>
+    <br>
     <div class="message"></div>
+    <br>
+    <div class="result-block"></div>
 </div>

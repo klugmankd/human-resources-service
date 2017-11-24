@@ -1,6 +1,6 @@
 <div class="form-block">
     <div class="title">
-        Створення
+        Видалення
     </div>
     <div class="form-group">
         <input type="text" name="first_name" class="input" placeholder="Ім'я">
@@ -19,7 +19,7 @@
     </div>
     <br>
     <div class="form-group">
-        <input type="button" id="create" value="Створити">
+        <input type="button" class="submit-button" value="Створити">
     </div>
-    <div class="message"></div>
+
 </div>

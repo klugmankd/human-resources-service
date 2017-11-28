@@ -44,16 +44,18 @@ class EmployeeController
     public function updateAction() {
         $connect = $this->database->connectDB();
         $employee = new Employee($connect);
-        $employee->update($_POST['update']);
+        $answer['message'] = ($employee->update($_POST['update'])) ? "Оновлено" : "Не оновлено";
         unset($employee);
         $this->database->closeDB($connect);
+        echo json_encode($answer);
     }
 
     public function deleteAction() {
         $connect = $this->database->connectDB();
         $employee = new Employee($connect);
-        $employee->delete($_POST['delete']);
+        $answer['message'] = ($employee->delete($_POST['delete'])) ? "Видалено" : "Видалено";
         unset($employee);
         $this->database->closeDB($connect);
+        echo json_encode($answer);
     }
 }

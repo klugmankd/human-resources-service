@@ -19,7 +19,7 @@
     </div>
     <br>
     <div class="form-group">
-        <input type="button" class="submit-button" value="Створити">
+        <input type="button" id="delete" value="Видалити">
     </div>
-
+    <div class="message"></div>
 </div>

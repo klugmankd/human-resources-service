@@ -1,5 +1,13 @@
+$(document).ready(function () {
+    if ($(".form-block").css("opacity") === "0") {
+        $(".form-block").animate({"opacity": 1}, 300);
+    }
+});
+
 $(document).on("click", ".menu-item", function () {
     var action = $(this).data('action');
+    $(".menu-item").removeClass('active');
+    $(this).addClass('active');
     $.ajax({
         type: "GET",
         url: "employee",
@@ -11,6 +19,7 @@ $(document).on("click", ".menu-item", function () {
                 $(".loader").remove();
                 var formBlock = $(data).find(".form-block");
                 $("main").html(formBlock);
+                $(".form-block").animate({"opacity": 1}, 300);
             }, 1000)
         }
     })
@@ -53,7 +62,8 @@ $(document).on("click", "#create", function () {
 
 $(document).on("click", "#read", function () {
     var form = document.querySelectorAll(".input");
-    var query = [];
+    var join = document.querySelectorAll(".join");
+    var query = [], joins, conditions;
     for (var index in form) {
         if (index < form.length) {
             if (form[index].value !== "") {
@@ -61,7 +71,7 @@ $(document).on("click", "#read", function () {
             }
         }
     }
-    if (query.length > 0) {
+    // if (query.length > 0) {
         console.log(query);
         $.ajax({
             type: "POST",
@@ -71,16 +81,15 @@ $(document).on("click", "#read", function () {
                 $(".form-block").addClass("hidden");
                 $("main").append("<div class='loader'></div>");
                 setTimeout(function () {
-                    // var answer = JSON.parse(data);
                     $(".result-block").html(data);
                     $(".form-block").removeClass("hidden");
                     $(".loader").remove();
                 }, 1000);
             }
         })
-    } else {
-        $(".message").text("Хочаб одне поле маєбуты заповнене!")
-    }
+    // } else {
+    //     $(".message").text("Хочаб одне поле маєбуты заповнене!")
+    // }
 });
 
 $(document).on("click", "#update", function () {
@@ -191,4 +200,17 @@ $(document).on("click", ".del", function () {
             }, 1000);
         }
     })
+});
+
+$('.message a').click(function(){
+    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+$(document).on("focus", ".date", function () {
+   $(this).attr("type", "date");
+});
+
+$(document).on("blur", ".date", function () {
+    if ($(this).val() === "")
+        $(this).attr("type", "text");
 });

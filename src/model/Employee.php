@@ -7,13 +7,11 @@ class Employee
 {
     private $connect;
     private $table;
-    private $dbName;
 
-    public function __construct($connect)
+    public function __construct($connect, $table)
     {
         $this->connect = $connect;
-        $this->table = "employee";
-        $this->dbName = "human_resources";
+        $this->table = $table;
     }
 
     public function create($arCreate) {
@@ -30,13 +28,18 @@ class Employee
     }
 
     public function read($arCriteria) {
-        $conditions = "";
-        foreach ($arCriteria as $key => $criterion) {
-            $col = $criterion['col'];
-            $value = $criterion['value'];
-            $conditions .= ($key !== count($arCriteria) - 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}';";
+        if (!is_null($arCriteria)) {
+            $conditions = "";
+            foreach ($arCriteria as $key => $criterion) {
+                $col = $criterion['col'];
+                $value = $criterion['value'];
+                $conditions .= ($key !== count($arCriteria) - 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}'";
+            }
+            $query = "SELECT * FROM {$this->table} WHERE {$conditions};";
+        } else {
+            $query = "SELECT * FROM {$this->table};";
         }
-        $query = "SELECT * FROM {$this->table} WHERE {$conditions}";
+
         $executing = mysqli_query($this->connect, $query);
         if ($executing) {
             $arResult = array();
@@ -59,7 +62,7 @@ class Employee
             $value = $arItem['value'];
             $conditions .= ($key !== count($arUpdate['conditions']) - 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}';";
         }
-        $query = "UPDATE `{$this->table}` SET {$settings} WHERE {$conditions}";
+        $query = "UPDATE {$this->table} SET {$settings} WHERE {$conditions}";
         $executing = mysqli_query($this->connect, $query);
         return $executing;
     }
@@ -71,7 +74,7 @@ class Employee
             $value = $criterion['value'];
             $conditions .= ($key !== count($arDelete) - 1) ? "`{$col}`='{$value}' AND " : "`{$col}`='{$value}';";
         }
-        $query = "DELETE FROM `{$this->table}` WHERE {$conditions}";
+        $query = "DELETE FROM {$this->table} WHERE {$conditions}";
         $executing = mysqli_query($this->connect, $query);
         return $executing;
     }

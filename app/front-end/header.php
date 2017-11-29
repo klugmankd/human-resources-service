@@ -13,7 +13,7 @@
 <header>
     <div class="nav-bar">
         <ul class="menu">
-            <li class="menu-item" data-action="create">Створити</li>
+            <li class="menu-item active" data-action="create">Створити</li>
             <li class="menu-item" data-action="read">Відобразити</li>
             <li class="menu-item" data-action="update">Оновити</li>
             <li class="menu-item" data-action="delete">Видалити</li>
@@ -21,3 +21,5 @@
     </div>
 </header>
 <main>
+<!--    <div class="login-page">-->
+

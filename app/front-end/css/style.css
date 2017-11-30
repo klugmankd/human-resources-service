@@ -58,7 +58,7 @@ header .nav-bar .menu .menu-item:hover {
 }
 
 .result-block .result-item:first-child {
-    border: 1px solid silver;
+    /*border: 1px solid silver;*/
 }
 .result-block .result-item .result-field {
     padding: 15px 0;

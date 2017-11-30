@@ -2,7 +2,7 @@
 
 include_once ("app/Resources/router.php");
 
-$route = ($_GET['route'] == '') ? 'index' : $_GET['route'];
+$route = ($_GET['route'] == '') ? 'login' : $_GET['route'];
 
 if (count($routes[$route]) > 0) {
     $url[0] = $routes[$route]['controller'];

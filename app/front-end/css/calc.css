@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+    width: 100%;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+
+header {
+    width: 98%;
+    padding: 1%;
+    background-color: #3c398b;
+}
+
+header h1 {
+    color: white;
+}

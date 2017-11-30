@@ -16,6 +16,10 @@ class EmployeeController
     }
 
     public function indexAction() {
+        session_start();
+        if (empty($_SESSION['id'])) {
+            header("Location: login");
+        }
         $actions = array("create", "read", "update", "delete");
         $action = (in_array($_GET['action'], $actions) && !empty($_GET['action'])) ? $_GET['action'] . "Template.php" : "createTemplate.php";
         setcookie("action", $action);
